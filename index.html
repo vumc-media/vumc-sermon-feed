@@ -4,216 +4,228 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VUMC Sermon Podcast</title>
+
   <style>
     * { box-sizing: border-box; }
 
-    :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --accent: #7c3aed;
-      --accent-dark: #5b21b6;
-      --border: #e5e7eb;
-      --shadow: 0 10px 30px rgba(0,0,0,0.08);
-      --radius: 18px;
-      --maxw: 1100px;
+    :root{
+      --bg:#f4f6fb;
+      --card:#ffffff;
+      --text:#222222;
+      --muted:#666666;
+      --border:#e5e7eb;
+      --accent:#6f4ef6;
+      --accent-dark:#5d3fe0;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+      --radius:18px;
+      --maxw:1100px;
     }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
     }
 
-    .wrap {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 28px 16px 48px;
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:30px 16px 50px;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #ffffff, #f2edff);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px 22px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-      text-align: center;
+    .hero{
+      background:var(--card);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:30px 24px;
+      text-align:center;
+      margin-bottom:24px;
     }
 
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: 2rem;
-      line-height: 1.1;
+    .hero h1{
+      margin:0 0 10px;
+      font-size:2rem;
+      line-height:1.15;
     }
 
-    .hero p {
-      margin: 0 auto 18px;
-      max-width: 750px;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.6;
+    .hero p{
+      margin:0 auto;
+      max-width:720px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:1rem;
     }
 
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 14px;
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin-top:18px;
     }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      background: var(--accent);
-      color: #fff;
-      padding: 11px 16px;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      transition: 0.2s ease;
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      background:var(--accent);
+      color:#fff;
+      padding:11px 16px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:.95rem;
+      transition:.2s ease;
     }
 
-    .btn:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
+    .btn:hover{
+      background:var(--accent-dark);
+      transform:translateY(-1px);
     }
 
-    .btn.secondary {
-      background: #fff;
-      color: var(--text);
-      border: 1px solid var(--border);
+    .btn.alt{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--border);
     }
 
-    .status {
-      margin: 20px 0 12px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.98rem;
+    .status{
+      text-align:center;
+      color:var(--muted);
+      margin:12px 0 20px;
+      font-size:.98rem;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 18px;
+    .error{
+      background:#fff1f2;
+      color:#9f1239;
+      border:1px solid #fecdd3;
+      padding:14px;
+      border-radius:14px;
+      text-align:center;
+      margin:0 0 20px;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(290px, 1fr));
+      gap:20px;
     }
 
-    .thumb-wrap {
-      aspect-ratio: 16 / 9;
-      background: #ebeef5;
-      overflow: hidden;
+    .card{
+      background:var(--card);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
     }
 
-    .thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .thumb-wrap{
+      aspect-ratio:16 / 9;
+      background:#eceff5;
+      overflow:hidden;
     }
 
-    .content {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .thumb{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
-    .title {
-      margin: 0;
-      font-size: 1.15rem;
-      line-height: 1.35;
+    .thumb-fallback{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#6b7280;
+      font-weight:700;
+      font-size:1rem;
     }
 
-    .meta {
-      color: var(--muted);
-      font-size: 0.9rem;
+    .content{
+      padding:16px;
     }
 
-    .desc {
-      color: #374151;
-      font-size: 0.95rem;
-      line-height: 1.55;
+    .title{
+      font-size:1.08rem;
+      font-weight:700;
+      line-height:1.35;
+      margin:0 0 6px;
     }
 
-    audio {
-      width: 100%;
-      margin-top: 4px;
+    .meta{
+      color:#777;
+      font-size:.9rem;
+      margin-bottom:10px;
     }
 
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
+    .desc{
+      color:#444;
+      font-size:.94rem;
+      line-height:1.55;
+      margin-bottom:12px;
     }
 
-    .small-link {
-      text-decoration: none;
-      color: var(--accent-dark);
-      font-size: 0.92rem;
-      font-weight: 700;
+    audio{
+      width:100%;
+      margin-top:2px;
     }
 
-    .footer-note {
-      margin-top: 24px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.88rem;
-      line-height: 1.5;
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
     }
 
-    .error {
-      background: #fff1f2;
-      color: #9f1239;
-      border: 1px solid #fecdd3;
-      padding: 14px;
-      border-radius: 14px;
-      text-align: center;
-      margin: 12px 0 20px;
+    .links a{
+      color:var(--accent-dark);
+      text-decoration:none;
+      font-size:.92rem;
+      font-weight:700;
     }
 
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 1.6rem;
+    .footer-note{
+      text-align:center;
+      color:var(--muted);
+      font-size:.88rem;
+      line-height:1.5;
+      margin-top:26px;
+    }
+
+    @media (max-width:640px){
+      .hero h1{
+        font-size:1.6rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
+
     <section class="hero">
       <h1>VUMC Sermon Podcast</h1>
       <p>
         Listen to recent sermons and messages from Versailles United Methodist Church.
-        New episodes update automatically from the podcast feed.
+        New episodes appear automatically from our podcast feed.
       </p>
 
-      <div class="btn-row">
+      <div class="buttons">
+        <!-- Replace the Apple link below with your actual Apple Podcasts show page when ready -->
         <a class="btn" href="https://podcasts.apple.com/" target="_blank" rel="noopener">Apple Podcasts</a>
-        <a class="btn secondary" href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a>
-        <a class="btn secondary" href="https://www.iheart.com/" target="_blank" rel="noopener">iHeartRadio</a>
+        <a class="btn alt" href="https://open.spotify.com/show/5euyxMvYOhMD9cD6tHa2Dd" target="_blank" rel="noopener">Spotify</a>
+        <a class="btn alt" href="https://www.iheart.com/podcast/269-versailles-umc-church-beyo-283209729/" target="_blank" rel="noopener">iHeartRadio</a>
       </div>
     </section>
 
-    <div id="status" class="status">Loading episodes...</div>
+    <div id="status" class="status">Loading sermons...</div>
     <div id="errorBox"></div>
     <div id="episodes" class="grid"></div>
 
     <div class="footer-note">
-      This page reads your podcast RSS feed and builds a simple sermon podcast page for your website.
+      Sermons update automatically from the podcast RSS feed.
     </div>
   </div>
 
@@ -231,7 +243,7 @@
       return (div.textContent || div.innerText || "").trim();
     }
 
-    function truncate(text, max = 220) {
+    function truncate(text, max = 190) {
       if (!text) return "";
       return text.length > max ? text.slice(0, max).trim() + "..." : text;
     }
@@ -249,29 +261,32 @@
     function getAudioUrl(item) {
       if (item.enclosure && item.enclosure.link) return item.enclosure.link;
 
-      const match = (item.description || "").match(/https?:\/\/[^"'\\s>]+\\.(mp3|m4a|aac|wav)(\\?[^"'\\s>]*)?/i);
+      const match = (item.description || "").match(
+        /https?:\/\/[^"'\s>]+\.(mp3|m4a|aac|wav)(\?[^"'\s>]*)?/i
+      );
       return match ? match[0] : "";
     }
 
     function renderEpisodes(items, feed) {
-      statusEl.textContent = `Showing ${items.length} recent episodes`;
+      statusEl.textContent = `Showing ${items.length} recent sermons`;
 
       const fallbackImage = feed?.image || "";
 
       episodesEl.innerHTML = items.map(item => {
         const title = item.title || "Untitled Episode";
         const pubDate = formatDate(item.pubDate);
-        const description = truncate(stripHtml(item.description), 260);
+        const description = truncate(stripHtml(item.description), 190);
         const audioUrl = getAudioUrl(item);
-        const image = item.thumbnail || item.enclosure?.thumbnail || fallbackImage || "";
+        const image = item.thumbnail || fallbackImage || "";
         const episodeLink = item.link || "#";
 
         return `
           <article class="card">
             <div class="thumb-wrap">
-              ${image
-                ? `<img class="thumb" src="${image}" alt="${title.replace(/"/g, "&quot;")}">`
-                : `<div class="thumb" style="display:flex;align-items:center;justify-content:center;font-weight:bold;color:#6b7280;">VUMC Podcast</div>`
+              ${
+                image
+                  ? `<img class="thumb" src="${image}" alt="${title.replace(/"/g, "&quot;")}">`
+                  : `<div class="thumb-fallback">VUMC Podcast</div>`
               }
             </div>
 
@@ -283,12 +298,16 @@
               ${
                 audioUrl
                   ? `<audio controls preload="none" src="${audioUrl}"></audio>`
-                  : `<div class="meta">Audio player unavailable for this episode.</div>`
+                  : `<div class="meta">Audio unavailable for this episode.</div>`
               }
 
               <div class="links">
-                <a class="small-link" href="${episodeLink}" target="_blank" rel="noopener">Open episode</a>
-                ${audioUrl ? `<a class="small-link" href="${audioUrl}" target="_blank" rel="noopener">Direct audio</a>` : ""}
+                <a href="${episodeLink}" target="_blank" rel="noopener">Open episode</a>
+                ${
+                  audioUrl
+                    ? `<a href="${audioUrl}" target="_blank" rel="noopener">Direct audio</a>`
+                    : ""
+                }
               </div>
             </div>
           </article>
@@ -297,14 +316,14 @@
     }
 
     function showError(message) {
-      statusEl.textContent = "Unable to load episodes";
+      statusEl.textContent = "Unable to load sermons";
       errorBox.innerHTML = `<div class="error">${message}</div>`;
     }
 
     async function loadFeed() {
       try {
         const res = await fetch(FEED_API);
-        if (!res.ok) throw new Error("Feed service request failed.");
+        if (!res.ok) throw new Error("Feed request failed.");
 
         const data = await res.json();
         if (data.status !== "ok" || !Array.isArray(data.items)) {
@@ -314,9 +333,7 @@
         renderEpisodes(data.items.slice(0, 12), data.feed);
       } catch (err) {
         console.error(err);
-        showError(
-          "The podcast feed could not be loaded. If this keeps happening, the feed may be blocking browser access or the feed-to-JSON service may be temporarily unavailable."
-        );
+        showError("The podcast feed could not be loaded. If this continues, the feed service may be temporarily unavailable.");
       }
     }
 
